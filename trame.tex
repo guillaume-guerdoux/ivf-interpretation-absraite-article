@@ -1,10 +1,14 @@
 \documentclass[french]{report}
 \usepackage[utf8]{inputenc}
+\usepackage{babel}
+
 
 \begin{document}
-\chapter{Thème : trame générique}
+\chapter{Thème : Interprétation abstraite}
 
-Indiquer les noms des contributeurs
+Mansouri Kasra
+Tchakamian Romain
+Guerdoux Guillaume
 
 \section*{Avant-propos}
 
@@ -14,13 +18,14 @@ Indiquer les noms des contributeurs
 \medskip
 Afin d'avoir une présentation commune, les sources latex de ce chapitre vous seront communiquées (fichier trame.tex), ainsi que le fichier global (synthese.tex).
 
-Pour ceux qui ne connaissent pas encore latex, la page
 
-\begin{verbatim}
-http://www.tuteurs.ens.fr/logiciels/latex/
-\end{verbatim}
-
-fournit une bonne introduction. Il n'est pas attendu que vous développiez une expertise particuliére en latex. Cependant,  vous étes invités é citer les  principales ressources que vous aurez utilisez en insérant par exemple \verb2\cite{0-Meyer14}2 pour référencer le livre de Bertrand Meyer, (ce qui donnera \cite{0-Meyer14} dans votre texte,) décrit dans un fichier .bib de la faéon suivante~:
+fournit une bonne introduction.
+Il n'est pas attendu que vous développiez une expertise particuliére en latex.
+Cependant,  vous étes invités é citer les
+principales ressources que vous aurez utilisez en
+ insérant par exemple \verb2\cite{0-Meyer14}2 pour référencer l
+ e livre de Bertrand Meyer, (ce qui donnera \cite{0-Meyer14} dans votre texte,)
+  décrit dans un fichier .bib de la faéon suivante~:
 \begin{verbatim}
 @book{0-Meyer14,
   author    = {Bertrand Meyer},
@@ -38,13 +43,95 @@ Les titres des sections suivantes sont donnés é titre indicatif : si l'une des
 \medskip
 Vous pouvez utiliser l'anglais ou le franéais.
 
+
 \section{Introduction}
 
-quelques mots qui introduisent le théme, situe le contexte, notamment les motivations, éléments historiques, \ldots
+\paragraph{}
+ TODO : ATTENTION, J'AI PAS MAL UTILISER UN SEUL DOCUMENT, RISQUE DE PLAGIAT
+Nous assistons depuis plus de 25 ans à une explosion des performances du matériel
+informatique, performances qui ont été multipliées par 10\up{4} à 10\up{6}. La taille des
+programmes informatique a ainsi été accrue du même ordre de grandeur.
+Malheureusement, les erreur et les bogues ont de la même façon une probabilité démultipliée
+d'arriver et, au vu de la taille des nouveaux programmes, les méthodologies classiques de
+révision du code sont tout simplement impossibles à mettre en oeuvre. \\
+
+\paragraph{}
+Une nouvelle idée a donc émergée, l'idée d'utiliser l'ordinateur lui-même pour détecter
+les erreurs de programmation. Or ce travail est extrèmement complexe pour une machine dû à des
+problèmes d'indécidabilité et de complexité. Nous ne pouvons donc nous résoudre seulement à une approximation
+des comportements possibles du programme analysé.
+Par exemple, le model checking fonctionne très bien sur des systèmes finis mais est
+le plus souvent incomplet sur des systèmes infinis.  \\
+
+Ces méthodes sont des cas particuliers d'interprétation abstraite de sémantique.
 
 \section{Principe général}
 
-description de quelques éléments techniques
+\subsection{Rappel}
+\paragraph{Modèle de calcul}
+Un modèle de calcul est tout simplement une description mathématique formelle
+de la succession des opérations effectuées par un programme sur un ordinateur ainsi que de
+la modification des états internes de l'ordinateur et externes de l'environnement, et ceci
+dans toutes les conditions possibles.
+
+\paragraph{Sémantique}
+Considérant un programme P, la sémantique de ce programme est une description des sens des
+constructions du langage. En effet, similairement à un langage naturel, les phrases d'un programme
+peuvent être syntaxiquement correctes mais ne pas toutes avoir un sens. Ainsi, en pratique,
+la sémantique d'un programme P est un modèle de calcul qui décrit toutes les
+éxécutions effective du programme P, et ce quel que soit l'environnement. \\
+Il existe plusieurs types de sémantiques :
+\begin{description}
+    \item La sémantique axiomatique
+    \item La sématique opérationnelle
+    \item La sémantique dénotationnelle
+\end{description}
+Toutes ces sémantiques sont soit équivalentes, soit une approximation l'une de l'autre.
+
+\paragraph{Spécification et vérification}
+Pour un programme P, sa spécification est un modèle de calcul décrivant toutes ses
+exécutions souhaitées (dans tous les environnements).  \\
+Par exemple une spécification peut être tout simplement l'absence d'erreur arithmétique
+dans le programme (division par 0). \\
+Les spécifications peuvent être plus complexes et être données par des langages
+de spécification plus précis (nottament les logiques temporelles). \\
+Vérifier un programme P consiste à prouver qu’une sémantique de ce programme
+satisfait une spécification S donnée. \\
+
+Toutefois, de nombreuses questions relatives à la sémantique d'un programme P restent indécidables
+comme la vérification du fait de la non calculabilité (en temps fini) des équations résultantes.
+
+Il devient alors nécessaire de considérer des \textbf{approximations}.
+
+\subsection{L'interprétation abstraite}
+On définit comme sémantique concrète la sémantique la plus précise, celle qui décrit l'exécution
+réelle d'un programme mais dont la vérification reste le plus souvent indécidables.
+L’interprétation abstraite formalise l’idée qu’une sémantique est plus ou moins précise
+selon le niveau d’observation auquel on se place. Ainsi, l'interprétation abstraite consiste à
+déterminer des sémantiques liées par des relations d'abstractions.
+
+\paragraph{Exemple illustratif}
+On considère une boîte remplie de 100 billes de couleurs (jaunes, rouges et verts).
+Chaque bille possède un ID, un numéro (non unique, entre 1 et 10 000)
+et une couleur ((jaune, rouge ou vert).
+Si nous souhaitions prouver que certaines billes n'étaient pas présentes, une manière serait
+de tenir une liste comprenant le numéro et l'id de toutes les billes.
+Mais nous aurions pu simplement récupérer leur numéro, si le numéro d'une bille est introuvable dans la liste,
+alors celle-ci est absente. Toutefois, ce n'est pas parce que le numéro d'une bille est
+trouvée dans la liste que celle-ci est dans la boîte (deux billes peuvent avoir le
+même numéro). Toutefois, cette information, non absoule est suffisante dans la plupart
+des cas (100 billes pouvant prendre des numéros entre 1 et 10 000, soit 1 chances sur 100 que deux billes aient
+le même numéro).
+Si nous ne sommes intéressés qu'à une information,
+comme « Y a-t-il une bille jaune dans la boîte », il n'est
+pas nécessaire de garder une liste de tous les numéros et couleurs de toutes les billets.
+Nous pouvons, sans perdre de précision, nous
+restreindre à maintenir une simple liste de la couleur des billes.
+
+L'inteprétation abstraite, sur un exemple très simple, permet de rendre calculable, un cas qui ne l'est pas,
+en prenant en compte le contexte ou en approximant la sémantique sémantique concrète.
+
+
 
 \section{Exemple pédagogique}
 
