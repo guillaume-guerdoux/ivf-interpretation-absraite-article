@@ -1,0 +1,65 @@
+\documentclass[french]{report}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\chapter{Thème : trame générique}
+
+Indiquer les noms des contributeurs
+
+\section*{Avant-propos}
+
+
+
+
+\medskip
+Afin d'avoir une présentation commune, les sources latex de ce chapitre vous seront communiquées (fichier trame.tex), ainsi que le fichier global (synthese.tex).
+
+Pour ceux qui ne connaissent pas encore latex, la page
+
+\begin{verbatim}
+http://www.tuteurs.ens.fr/logiciels/latex/
+\end{verbatim}
+
+fournit une bonne introduction. Il n'est pas attendu que vous développiez une expertise particuliére en latex. Cependant,  vous étes invités é citer les  principales ressources que vous aurez utilisez en insérant par exemple \verb2\cite{0-Meyer14}2 pour référencer le livre de Bertrand Meyer, (ce qui donnera \cite{0-Meyer14} dans votre texte,) décrit dans un fichier .bib de la faéon suivante~:
+\begin{verbatim}
+@book{0-Meyer14,
+  author    = {Bertrand Meyer},
+  title     = {Agile! - The Good, the Hype and the Ugly},
+  publisher = {Springer},
+  year      = {2014}
+}
+\end{verbatim}
+
+Pour ne pas avoir de clash entre vos fichiers,  vous étes invitez é précéder vos références par le numéro de votre théme (ici nous avons choisi le numéro 0).
+
+\medskip
+Les titres des sections suivantes sont donnés é titre indicatif : si l'une des sections n'est pas pertinente pour votre théme, vous pouvez la supprimer, la renommer, \ldots, é votre guise.
+
+\medskip
+Vous pouvez utiliser l'anglais ou le franéais.
+
+\section{Introduction}
+
+quelques mots qui introduisent le théme, situe le contexte, notamment les motivations, éléments historiques, \ldots
+
+\section{Principe général}
+
+description de quelques éléments techniques
+
+\section{Exemple pédagogique}
+
+illustration avec un exemple, petit si possible  (éventuellement seulement dans les grandes lignes)
+
+\section{Outillage}
+
+existence et caractériques éventuelles des outils en lien avec le théme
+
+\section{Applications}
+
+quelques pratiques ou applications dérivées
+
+\section{Limitations}
+
+ce qui n'est pas couvert par le théme
+
+\end{document}
