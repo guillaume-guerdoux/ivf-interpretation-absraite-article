@@ -68,6 +68,16 @@ Ces méthodes sont des cas particuliers d'interprétation abstraite de sémantiq
 \section{Principe général}
 
 \subsection{Rappel}
+\paragraph{Analyse statique et dynamique}
+L'analyse statique consiste à obtenir des informations sur le comportement d'un programme
+lors de son exécution sans réellement l'exécuter (en utilisant notamment des méthodes de
+vérification formelle). \\
+L'analyse dynamique consiste elle à suivre l’exécution d'un programme et d'en repérer les bogues.
+
+Ainsi l'analyse statique se charge en amont de repérer des erreurs formelles de programmation
+ou de conception, ainsi que la facilité de maintien du code.
+
+
 \paragraph{Modèle de calcul}
 Un modèle de calcul est tout simplement une description mathématique formelle
 de la succession des opérations effectuées par un programme sur un ordinateur ainsi que de
@@ -141,9 +151,64 @@ illustration avec un exemple, petit si possible  (éventuellement seulement dans
 
 existence et caractériques éventuelles des outils en lien avec le théme
 
-\section{Applications}
+\section{Applications : L'analyseur d'ASTREE}
 
-quelques pratiques ou applications dérivées
+\subsection{Introduction}
+Les systèmes embarqués peuplent de plus en plus nos vies et sont de plus en plus complexes. Des vies humaines
+dépendent de la fiabilité de ces systèmes embarqués (trains, voitures, avions, etc). Il est donc nécessaire de
+s'assurer de la fiabilité de ces systèmes avant de les mettre en service.
+C'est ce à quoi s'atelle l'analyseur d'ASTREE qui vise à prouver formellement
+l'abscence de \textit{runtime errors} dans les programmes écrits en C. \\
+
+Une \textit{runtime error} est une erreur dans un programme C violant la norme de C (par exemple un indice sortant
+d'un tableau, ou une division par zéro), ou violant les directives de programmation (overflow), etc.
+
+L'analyseur d'ASTREE est donc un analyseur de programmes basé sur l'interprétation abstraite. En effet, toutes les preuves
+automatiques de programmes impliquent des formes d'approximation dans l'exécution du programme, formalisées par
+l'interprétation abstraite.
+Ainsi l'analyseur d'ASTREE, bien que limité aux \textit{runtime errors}, montre une première étape
+dans la vérification formelle d'énormes systèmes embarqués par l'interprétation abstraite en un temps de calcul
+raisonnable.
+
+\subsection{L'analyseur ASTREE}
+
+\paragraph{}
+ASTREE possède plusieurs domaines d'applications. \\
+Il est tout d'abord utilisé pour vérifier les programmes C embarqués dans les systèmes embarqués critiques
+de systèmes complexes. En effet, il permet d'analyser les programmes C "classiques". Ceci sont composés de pointeurs,
+tableaux, entiers, flotants, tests, boucles et appels à des fonctions, ceux sont les modèles qui sont embarqués dans les
+systèmes critiques. Il n'est pas permis d'avoir des bouts de programmes "secondaires", c'est à dire des librairies C,
+de l'allocation de mémoire dynamique et des fonctions récursives non bornées par exemples. L'analyseur d'ASTREE se
+préocuppe donc d'analyser les programmes potentiellement embarquables dans des systèmes critiques. \\
+De plus il vérifie les sémantiques opérationnelles concrètes (définies par la norme internationnal de C) qui
+est instanciée par un comportement spécifique selon l'ordinateur et le compilateur et restaint aux utilisations faites par
+l'utilisateur.
+ASTREE vérifie aussi les sémantiques collectées qui sont un ensemble des traces partielles pour
+la sémantique opérationelle concrète partant de l'état initial. Finalement, ASTREE vérifie la sémantique abstraite
+qui se base sur les traces des états atteignables.
+
+\paragraph{}
+ASTREE est donc un analyseur de programme qui est :
+\begin{description}
+    \item Static : La vérification se fait en amont de l'exécution
+    \item Automatique : Pas besoin d'adaptation par l'utilsateur selon le programme
+    \item Basé sur la sémantique
+    \item Solide : Il couvre tout l'espace des possibilités et ne peut laisser échapper une potentielle erreur
+    \item Terminant : Il termine forcément
+\end{description}
+ASTREE est aussi \textit{multi-abstraction}, il n'utilise pas seulement qu'une unique forme d'abstraction mais réalise
+un produit de nombreux domaines d'abstraction. Il met en relation les différentes analyses produites par les différentes
+formes d'abstraction. L'abstraction d'ASTREE est dite spécialisable, car il peut inclure des nouvelles
+formes d'abstraction ou ne pas utiliser certaines formes d'abstraction selon la catégorie du programme.
+
+
+\subsection{Conclusion}
+En conclusion de cette briève description d'ASTREE, nous pouvons déduire que cet analyseur est le pionnier de l'utilisation
+d'interprétation abstraite pour vérifier des programmes en temps calculables. Pour 700 000 lignes
+de codes, ASTREE ne met que 11h pour vérifier intégralement ce code.
+Il se limite pour l'instant aux \textit{runtime errors} mais tout nous laisse imaginer qu'il
+pourra un jour prendre en compte de nombreux autres types d'erreurs.
+
 
 \section{Limitations}
 
