@@ -1,7 +1,8 @@
 \documentclass[french]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
-
+\usepackage{amsmath}
+\usepackage[all]{xy}
 
 \begin{document}
 \chapter{Thème : Interprétation abstraite}
@@ -139,9 +140,35 @@ Nous pouvons, sans perdre de précision, nous
 restreindre à maintenir une simple liste de la couleur des billes.
 
 L'inteprétation abstraite, sur un exemple très simple, permet de rendre calculable, un cas qui ne l'est pas,
-en prenant en compte le contexte ou en approximant la sémantique sémantique concrète.
+en prenant en compte le contexte ou en approximant la sémantique sémantique concrète. \\
 
+Mahtématiquement cela reviendrait à choisir un domaine abstrait à partir d'un domaine concrèt donné. C'est-à-dire remplacer un ensemble d'objets S (états, traces, etc) par son abstraction $\beta(S)$. $\beta$ est appelée la fonction d'abstraction ou la fonction d'interprétation qui associe à chaque ensemble d'objets son domaine abstrait associé. La foncion inverse $\gamma$ est appelée la fonction de concrétisation, celle qui permet de mapper un ensemble d'objets abstraits vers des objets concrèts.
 
+Une interprétation abstraite doit avoir les caractéristiques suivantes :
+\begin{description}
+    \item Etre solide : Aucune erreur ne doit être oubliée ( S $\subset \gamma(\beta(S))$ )
+    \item Etre assez précise : Eviter les fausses alarmes
+    \item Etre simple : être calculable en un temps raisonnable 
+\end{description}
+
+ \begin{equation*}
+  \xymatrix@C+6em@R+3em{
+   S \ar[r]^{O} \ar[d]^{\beta} & S \ar[d]^{\beta} \\
+    A \ar@{-->}[r]^{T} & A
+  }
+ \end{equation*}
+ 
+ \begin{center}Figure 1. Illustration d'une abstraction \end{center}
+ 
+\begin{description}
+    \item S : Domaine concrèt
+    \item A : Domaine abstrait
+    \item O : S $\rightarrow$ S est la sémantique opérationnelle
+    \item $\beta$ : S $\rightarrow$ A est la fonction d'abstraction
+    \item T : A $\rightarrow$ A est l'abstraction de O ( fonction de transfert de A dans A)
+\end{description} 
+
+Il est important de noter dans cette illustration que la transormation T conserve l'abstraction $\beta$. C'est à dire que si nous effectuons une abstraction $\beta$ puis appliquons la transformation T, nous obtenons le même résultat que si nous exécutions d'abord la sémantique opérationnelle O puis l'abstraction $\beta$. Cette propriété constitue l'un des principes fondamenteux sur lesquels nous nous basons pour faire de l'analyse de programme.
 
 \section{Exemple pédagogique}
 
