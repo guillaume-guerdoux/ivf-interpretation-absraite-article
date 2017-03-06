@@ -161,7 +161,7 @@ Une interprétation abstraite doit avoir les caractéristiques suivantes :
  \begin{center}Figure 1. Illustration d'une abstraction \end{center}
  
 \begin{description}
-    \item S : Domaine concrèt
+	\item S : Domaine concrèt
     \item A : Domaine abstrait
     \item O : S $\rightarrow$ S est la sémantique opérationnelle
     \item $\beta$ : S $\rightarrow$ A est la fonction d'abstraction
@@ -174,11 +174,7 @@ Il est important de noter dans cette illustration que la transormation T conserv
 
 illustration avec un exemple, petit si possible  (éventuellement seulement dans les grandes lignes)
 
-\section{Outillage}
-
-existence et caractériques éventuelles des outils en lien avec le théme
-
-\section{Applications : L'analyseur d'ASTREE}
+\section{Outillage: L'analyseur d'ASTREE}
 
 \subsection{Introduction}
 Les systèmes embarqués peuplent de plus en plus nos vies et sont de plus en plus complexes. Des vies humaines
@@ -235,6 +231,37 @@ d'interprétation abstraite pour vérifier des programmes en temps calculables. 
 de codes, ASTREE ne met que 11h pour vérifier intégralement ce code.
 Il se limite pour l'instant aux \textit{runtime errors} mais tout nous laisse imaginer qu'il
 pourra un jour prendre en compte de nombreux autres types d'erreurs.
+
+
+\section{Applications}
+
+\paragraph{}
+Aujourd'hui l'analyse statique de programme par interprétation abstraite est utilisée dans de nombreux secteurs industriels. En particulier pour les logiciels embarqués, ce genre d'approche est utilisée pour assurer la sûreté de logiciel. \\
+
+Le premier exemple à citer est celui de l'analyse proposée dans "Theiling et al. 2000" qui a permis de calculer des bornes supérieurs au temps d'exécution de fragments de code assembleur, une tâche difficilement réalisable auparavant. Cette anaylse trouve son intérêt dans la vérification des logiciels temps réel. Par ailleurs l'analyseur Polyspace a vu le jour suite à l'échec du vol d'Ariane 5 pour analyser les application écrites avec le langage ADA. \\
+
+Depuis 2002, l’analyseur statique ASTRÉE a été développé afin d’analyser avec précision et robustesse certaines familles d’applications critiques embarquées, et a effectivement
+permis de prouver l’absence d’erreurs à l’exécution dans des applications avioniques
+de taille industrielle. Par ailleurs, la recherche des sources d’imprécision dans les calculs flottants a également fait l’objet de travaux en analyse statique (Goubault et al., 2002). \\
+
+Par exemple l'analyseur ASTRÉE a été appliqué au logiciel primaire de contrôle de vol du système de commande de vol électrique de a famille des Airbus A340 et A380. Les programmes étaient écrits en C et contenaient : \\
+\begin{description}
+	\item 100.000 à 250.000 lignes de code pour A340
+    \item 400.000 à 1.000.000 lignes de code pour A380 \\
+\end{description}
+
+L'analyse d'ASTRÉE sur 400.000 lignes de code a donné les résultats suivants : \\
+\begin{center}
+\begin{tabular}{|l|c|r|}
+  \hline
+  temps & mémoire & fausse alarme \\
+  \hline
+  13h52 mn & 2,2 Go & 0 \\
+  \hline
+\end{tabular} 
+\end{center}
+ 
+En se basant sur l'interprétation abstraite la communauté scientifque a réussi à formaliser des transformations de programmes telles que la compilation, la décompilation ainsi que le slicing. Ces formalismes permettent de combiner des analyses statiques et des transformations de programmes, par exemple, pour généraliser les algorithmes de transformation ou bien pour prouver des propriétés sur leur résultats.
 
 
 \section{Limitations}
