@@ -11,44 +11,10 @@ Mansouri Kasra
 Tchakamian Romain
 Guerdoux Guillaume
 
-\section*{Avant-propos}
-
-
-
-
-\medskip
-Afin d'avoir une présentation commune, les sources latex de ce chapitre vous seront communiquées (fichier trame.tex), ainsi que le fichier global (synthese.tex).
-
-
-fournit une bonne introduction.
-Il n'est pas attendu que vous développiez une expertise particuliére en latex.
-Cependant,  vous étes invités é citer les
-principales ressources que vous aurez utilisez en
- insérant par exemple \verb2\cite{0-Meyer14}2 pour référencer l
- e livre de Bertrand Meyer, (ce qui donnera \cite{0-Meyer14} dans votre texte,)
-  décrit dans un fichier .bib de la faéon suivante~:
-\begin{verbatim}
-@book{0-Meyer14,
-  author    = {Bertrand Meyer},
-  title     = {Agile! - The Good, the Hype and the Ugly},
-  publisher = {Springer},
-  year      = {2014}
-}
-\end{verbatim}
-
-Pour ne pas avoir de clash entre vos fichiers,  vous étes invitez é précéder vos références par le numéro de votre théme (ici nous avons choisi le numéro 0).
-
-\medskip
-Les titres des sections suivantes sont donnés é titre indicatif : si l'une des sections n'est pas pertinente pour votre théme, vous pouvez la supprimer, la renommer, \ldots, é votre guise.
-
-\medskip
-Vous pouvez utiliser l'anglais ou le franéais.
-
 
 \section{Introduction}
 
 \paragraph{}
- TODO : ATTENTION, J'AI PAS MAL UTILISER UN SEUL DOCUMENT, RISQUE DE PLAGIAT
 Nous assistons depuis plus de 25 ans à une explosion des performances du matériel
 informatique, performances qui ont été multipliées par 10\up{4} à 10\up{6}. La taille des
 programmes informatique a ainsi été accrue du même ordre de grandeur.
@@ -148,7 +114,7 @@ Une interprétation abstraite doit avoir les caractéristiques suivantes :
 \begin{description}
     \item Etre solide : Aucune erreur ne doit être oubliée ( S $\subset \gamma(\beta(S))$ )
     \item Etre assez précise : Eviter les fausses alarmes
-    \item Etre simple : être calculable en un temps raisonnable 
+    \item Etre simple : être calculable en un temps raisonnable
 \end{description}
 
  \begin{equation*}
@@ -157,16 +123,16 @@ Une interprétation abstraite doit avoir les caractéristiques suivantes :
     A \ar@{-->}[r]^{T} & A
   }
  \end{equation*}
- 
+
  \begin{center}Figure 1. Illustration d'une abstraction \end{center}
- 
+
 \begin{description}
 	\item S : Domaine concrèt
     \item A : Domaine abstrait
     \item O : S $\rightarrow$ S est la sémantique opérationnelle
     \item $\beta$ : S $\rightarrow$ A est la fonction d'abstraction
     \item T : A $\rightarrow$ A est l'abstraction de O ( fonction de transfert de A dans A)
-\end{description} 
+\end{description}
 
 Il est important de noter dans cette illustration que la transormation T conserve l'abstraction $\beta$. C'est à dire que si nous effectuons une abstraction $\beta$ puis appliquons la transformation T, nous obtenons le même résultat que si nous exécutions d'abord la sémantique opérationnelle O puis l'abstraction $\beta$. Cette propriété constitue l'un des principes fondamenteux sur lesquels nous nous basons pour faire de l'analyse de programme.
 
@@ -258,9 +224,9 @@ L'analyse d'ASTRÉE sur 400.000 lignes de code a donné les résultats suivants 
   \hline
   13h52 mn & 2,2 Go & 0 \\
   \hline
-\end{tabular} 
+\end{tabular}
 \end{center}
- 
+
 En se basant sur l'interprétation abstraite la communauté scientifque a réussi à formaliser des transformations de programmes telles que la compilation, la décompilation ainsi que le slicing. Ces formalismes permettent de combiner des analyses statiques et des transformations de programmes, par exemple, pour généraliser les algorithmes de transformation ou bien pour prouver des propriétés sur leur résultats.
 
 
@@ -268,4 +234,14 @@ En se basant sur l'interprétation abstraite la communauté scientifque a réuss
 
 ce qui n'est pas couvert par le théme
 
+\section{Références}
+Voici la liste des références que nous avons utilisées pour rédiger cet article.
+\begin{description}
+    \item \textbf{Interprétation abstraite} : Article de Patrick Cousot du
+    Département d’informatique de l'École normale supérieure.
+    \item \textbf{Systematic Design of Program Transformation Frameworks by Abstract Interpretation} :
+    Article de Patrick Cousot et de Radhia Cousot
+    \item \textbf{The ASTREE Analyser} Article présentant l'analyseur d'Astrée, par le CNRS, l'Ecole normale supérieure
+    et l'Ecole Polytechnique
+\end{description}
 \end{document}
