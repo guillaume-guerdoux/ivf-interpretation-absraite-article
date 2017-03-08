@@ -85,28 +85,7 @@ On définit comme sémantique concrète la sémantique la plus précise, celle q
 réelle d'un programme mais dont la vérification reste le plus souvent indécidables.
 L’interprétation abstraite formalise l’idée qu’une sémantique est plus ou moins précise
 selon le niveau d’observation auquel on se place. Ainsi, l'interprétation abstraite consiste à
-déterminer des sémantiques liées par des relations d'abstractions.
-
-\paragraph{Exemple illustratif}
-On considère une boîte remplie de 100 billes de couleurs (jaunes, rouges et verts).
-Chaque bille possède un ID, un numéro (non unique, entre 1 et 10 000)
-et une couleur ((jaune, rouge ou vert).
-Si nous souhaitions prouver que certaines billes n'étaient pas présentes, une manière serait
-de tenir une liste comprenant le numéro et l'id de toutes les billes.
-Mais nous aurions pu simplement récupérer leur numéro, si le numéro d'une bille est introuvable dans la liste,
-alors celle-ci est absente. Toutefois, ce n'est pas parce que le numéro d'une bille est
-trouvée dans la liste que celle-ci est dans la boîte (deux billes peuvent avoir le
-même numéro). Toutefois, cette information, non absoule est suffisante dans la plupart
-des cas (100 billes pouvant prendre des numéros entre 1 et 10 000, soit 1 chances sur 100 que deux billes aient
-le même numéro).
-Si nous ne sommes intéressés qu'à une information,
-comme « Y a-t-il une bille jaune dans la boîte », il n'est
-pas nécessaire de garder une liste de tous les numéros et couleurs de toutes les billets.
-Nous pouvons, sans perdre de précision, nous
-restreindre à maintenir une simple liste de la couleur des billes.
-
-L'inteprétation abstraite, sur un exemple très simple, permet de rendre calculable, un cas qui ne l'est pas,
-en prenant en compte le contexte ou en approximant la sémantique sémantique concrète. \\
+déterminer des sémantiques liées par des relations d'abstractions. Elle peut être vue comme une sorte d'exécution partielle d'un programme informatique, pour avoir davantage d'informations sur sa sémantique (son flot de données par exemple), sans avoir à le traiter complètement. \\
 
 Mahtématiquement cela reviendrait à choisir un domaine abstrait à partir d'un domaine concrèt donné. C'est-à-dire remplacer un ensemble d'objets S (états, traces, etc) par son abstraction $\beta(S)$. $\beta$ est appelée la fonction d'abstraction ou la fonction d'interprétation qui associe à chaque ensemble d'objets son domaine abstrait associé. La foncion inverse $\gamma$ est appelée la fonction de concrétisation, celle qui permet de mapper un ensemble d'objets abstraits vers des objets concrèts.
 
@@ -127,7 +106,7 @@ Une interprétation abstraite doit avoir les caractéristiques suivantes :
  \begin{center}Figure 1. Illustration d'une abstraction \end{center}
 
 \begin{description}
-	\item S : Domaine concrèt
+  \item S : Domaine concrèt
     \item A : Domaine abstrait
     \item O : S $\rightarrow$ S est la sémantique opérationnelle
     \item $\beta$ : S $\rightarrow$ A est la fonction d'abstraction
@@ -138,7 +117,30 @@ Il est important de noter dans cette illustration que la transormation T conserv
 
 \section{Exemple pédagogique}
 
-illustration avec un exemple, petit si possible  (éventuellement seulement dans les grandes lignes)
+Nous allons faire une illustration de cette technique à l'aide d'un exemple simple et pédagogique. On considère une boîte remplie de 100 billes de couleurs (jaunes, rouges et verts).
+Chaque bille possède un ID, un numéro (non unique, entre 1 et 10 000)
+et une couleur ((jaune, rouge ou vert).
+Si nous souhaitions prouver que certaines billes n'étaient pas présentes, une manière serait
+de tenir une liste comprenant le numéro et l'id de toutes les billes.
+Mais nous aurions pu simplement récupérer leur numéro, si le numéro d'une bille est introuvable dans la liste,
+alors celle-ci est absente. Toutefois, ce n'est pas parce que le numéro d'une bille est
+trouvée dans la liste que celle-ci est dans la boîte (deux billes peuvent avoir le
+même numéro). Toutefois, cette information, non absoule est suffisante dans la plupart
+des cas (100 billes pouvant prendre des numéros entre 1 et 10 000, soit 1 chances sur 100 que deux billes aient
+le même numéro).
+Si nous ne sommes intéressés qu'à une information,
+comme « Y a-t-il une bille jaune dans la boîte », il n'est
+pas nécessaire de garder une liste de tous les numéros et couleurs de toutes les billets.
+Nous pouvons, sans perdre de précision, nous
+restreindre à maintenir une simple liste de la couleur des billes.
+
+L'inteprétation abstraite, sur un exemple très simple, permet de rendre calculable, un cas qui ne l'est pas,
+en prenant en compte le contexte ou en approximant la sémantique sémantique concrète. \\
+
+En informatique, nous pouvons prendre l'exemple d'un programme manipulant des variables entières. Une abstraction de sémantique pourrait par exemple consister à omettre la \textbf{valeur} des variables manipulées et uniquement garder leur \textbf{signe} pour représenter l'état du programme. Dans le cas de l'opération de multiplication, une telle abstraction reste précise car pour connaitre le signe d'un produit il suffit de connaitre le signe de ses opérandes. En revanche pour l'addition, cette abstraction perd en précision. Il est impossible de connaitre le signe d'une somme si ses opérandes sont de signe contraire.\\
+
+En général, les abstractions de sémantique entrainent une perte de précision. Il y a donc un compromis à faire entre la précision et la faisabilité. On parle donc de \textbf{caclulabilité} vs \textbf{complexité}.
+
 
 \section{Outillage: L'analyseur d'ASTREE}
 
@@ -212,7 +214,7 @@ de taille industrielle. Par ailleurs, la recherche des sources d’imprécision 
 
 Par exemple l'analyseur ASTRÉE a été appliqué au logiciel primaire de contrôle de vol du système de commande de vol électrique de a famille des Airbus A340 et A380. Les programmes étaient écrits en C et contenaient : \\
 \begin{description}
-	\item 100.000 à 250.000 lignes de code pour A340
+  \item 100.000 à 250.000 lignes de code pour A340
     \item 400.000 à 1.000.000 lignes de code pour A380 \\
 \end{description}
 
@@ -230,10 +232,6 @@ L'analyse d'ASTRÉE sur 400.000 lignes de code a donné les résultats suivants 
 En se basant sur l'interprétation abstraite la communauté scientifque a réussi à formaliser des transformations de programmes telles que la compilation, la décompilation ainsi que le slicing. Ces formalismes permettent de combiner des analyses statiques et des transformations de programmes, par exemple, pour généraliser les algorithmes de transformation ou bien pour prouver des propriétés sur leur résultats.
 
 
-\section{Limitations}
-
-ce qui n'est pas couvert par le théme
-
 \section{Références}
 Voici la liste des références que nous avons utilisées pour rédiger cet article.
 \begin{description}
@@ -243,5 +241,8 @@ Voici la liste des références que nous avons utilisées pour rédiger cet arti
     Article de Patrick Cousot et de Radhia Cousot
     \item \textbf{The ASTREE Analyser} Article présentant l'analyseur d'Astrée, par le CNRS, l'Ecole normale supérieure
     et l'Ecole Polytechnique
+    \item \textbf{Analyse Statique par Interprétation
+Abstraite} article de Xavier Rival
+  \item \textbf{Interprétation abstraite: application aux logiciels de l'A380} exposé de Patrick Cousot sur des questions d'actualité - académie des sciences 
 \end{description}
 \end{document}
