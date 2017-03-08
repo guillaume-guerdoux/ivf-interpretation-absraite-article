@@ -1,15 +1,18 @@
-\documentclass[french]{report}
+\documentclass[french]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
 \usepackage{amsmath}
 \usepackage[all]{xy}
 
 \begin{document}
-\chapter{Thème : Interprétation abstraite}
 
-Mansouri Kasra
-Tchakamian Romain
-Guerdoux Guillaume
+\title{Interprétation abstraite}
+
+\author{Mansouri Kasra \\
+        Tchakamian Romain \\
+        Guerdoux Guillaume}
+
+\maketitle
 
 
 \section{Introduction}
@@ -17,20 +20,18 @@ Guerdoux Guillaume
 \paragraph{}
 Nous assistons depuis plus de 25 ans à une explosion des performances du matériel
 informatique, performances qui ont été multipliées par 10\up{4} à 10\up{6}. La taille des
-programmes informatique a ainsi été accrue du même ordre de grandeur.
-Malheureusement, les erreur et les bogues ont de la même façon une probabilité démultipliée
+programmes informatiques a ainsi été accrue du même ordre de grandeur.
+Malheureusement, les erreurs et les bogues ont de la même façon une probabilité démultipliée
 d'arriver et, au vu de la taille des nouveaux programmes, les méthodologies classiques de
 révision du code sont tout simplement impossibles à mettre en oeuvre. \\
 
 \paragraph{}
-Une nouvelle idée a donc émergée, l'idée d'utiliser l'ordinateur lui-même pour détecter
-les erreurs de programmation. Or ce travail est extrèmement complexe pour une machine dû à des
+Une nouvelle idée a donc émergé, l'idée d'utiliser l'ordinateur lui-même pour détecter
+les erreurs de programmation. Or ce travail est extrèmement complexe pour une machine, dû à des
 problèmes d'indécidabilité et de complexité. Nous ne pouvons donc nous résoudre seulement à une approximation
 des comportements possibles du programme analysé.
 Par exemple, le model checking fonctionne très bien sur des systèmes finis mais est
 le plus souvent incomplet sur des systèmes infinis.  \\
-
-Ces méthodes sont des cas particuliers d'interprétation abstraite de sémantique.
 
 \section{Principe général}
 
@@ -52,11 +53,11 @@ la modification des états internes de l'ordinateur et externes de l'environneme
 dans toutes les conditions possibles.
 
 \paragraph{Sémantique}
-Considérant un programme P, la sémantique de ce programme est une description des sens des
+Considérant un programme P, la sémantique de ce programme est une description du sens des
 constructions du langage. En effet, similairement à un langage naturel, les phrases d'un programme
 peuvent être syntaxiquement correctes mais ne pas toutes avoir un sens. Ainsi, en pratique,
 la sémantique d'un programme P est un modèle de calcul qui décrit toutes les
-éxécutions effective du programme P, et ce quel que soit l'environnement. \\
+éxécutions effectives du programme P, et ce quel que soit l'environnement. \\
 Il existe plusieurs types de sémantiques :
 \begin{description}
     \item La sémantique axiomatique
@@ -71,7 +72,7 @@ exécutions souhaitées (dans tous les environnements).  \\
 Par exemple une spécification peut être tout simplement l'absence d'erreur arithmétique
 dans le programme (division par 0). \\
 Les spécifications peuvent être plus complexes et être données par des langages
-de spécification plus précis (nottament les logiques temporelles). \\
+de spécification plus précis (notamment les logiques temporelles). \\
 Vérifier un programme P consiste à prouver qu’une sémantique de ce programme
 satisfait une spécification S donnée. \\
 
@@ -243,6 +244,6 @@ Voici la liste des références que nous avons utilisées pour rédiger cet arti
     et l'Ecole Polytechnique
     \item \textbf{Analyse Statique par Interprétation
 Abstraite} article de Xavier Rival
-  \item \textbf{Interprétation abstraite: application aux logiciels de l'A380} exposé de Patrick Cousot sur des questions d'actualité - académie des sciences 
+  \item \textbf{Interprétation abstraite: application aux logiciels de l'A380} exposé de Patrick Cousot sur des questions d'actualité - académie des sciences
 \end{description}
 \end{document}
